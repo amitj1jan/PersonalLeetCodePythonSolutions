@@ -5,6 +5,7 @@ class Solution:
         else:
             left = 0
             right = len(nums) -1
+
             while right >= left:
                 mid = left + (right-left)//2
                 if target > nums[right]:
