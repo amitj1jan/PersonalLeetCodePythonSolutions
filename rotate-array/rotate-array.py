@@ -3,6 +3,4 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        while k >0:            
-            nums.insert(0, nums.pop())
-            k -= 1
+        nums[:] = nums[-k:] + nums[:len(nums)-k]
