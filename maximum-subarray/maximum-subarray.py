@@ -3,7 +3,9 @@ class Solution:
     written by amitjha@umich.edu
     '''
     def maxSubArray(self, nums: List[int]) -> int:
-        for i in range(1, len(nums)):
-            if nums[i-1] >0:
-                nums[i] += nums[i-1]
-        return(max(nums))
+        current_sum = 0
+        best_sum = -inf
+        for num in nums:
+            current_sum = max(num, current_sum+num)
+            best_sum = max(current_sum, best_sum)
+        return(best_sum)
