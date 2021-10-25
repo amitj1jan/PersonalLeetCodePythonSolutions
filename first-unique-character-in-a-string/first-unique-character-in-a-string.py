@@ -1,16 +1,13 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        dic = {}
-        res = []
-        for char in s:
-            dic[char] = dic.get(char, 0) + 1
-        
-        for item in dic:
-            if dic[item] == 1:
-                res.append(s.index(item))
-        if len(res) >0:
-            return(min(res))
+        hash_map = {}
+        for indx,char in enumerate(s):
+            if char not in hash_map:
+                hash_map[char] = indx 
+            else:
+                hash_map[char] = 99999
+        if min(hash_map.values()) == 99999:
+            return(-1)
         else:
-            return(-1)        
-        
+            return(min(hash_map.values()))        
         
