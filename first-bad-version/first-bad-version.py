@@ -9,14 +9,15 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        left = 1
-        right = n
-        while right > left:
-            mid = left + (right-left)//2            
-            if isBadVersion(mid):
-                right = mid
-            else:
-                left = mid + 1
-        return(left)
-            
+        l = 1
+        r = n        
+        return(self.binarySearch(n, l, r))
         
+    def binarySearch(self, n, l, r):
+        mid = l + (r-l)//2
+        if l <= r:
+            if isBadVersion(mid):
+                return(self.binarySearch(n, l, mid-1))
+            else:
+                return(self.binarySearch(n, mid+1, r))
+        return(l)
